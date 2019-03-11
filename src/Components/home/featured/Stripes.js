@@ -51,18 +51,18 @@ class Stripes extends Component {
                    
                 }}
             >
-            {({opacity,left,rotate,top, background})=>{
-                return(
-                    <div
-                        className="stripe"
-                        style={{
-                            background,
-                            opacity,
-                            transform: `rotate(${rotate}deg) translate(${left}px, ${top}px)`
-                        }}
-                ></div>
-                );
-            }}
+                {({opacity,left,rotate,top, background})=>{
+                    return(
+                        <div
+                            className="stripe"
+                            style={{
+                                background,
+                                opacity,
+                                transform: `rotate(${rotate}deg) translate(${left}px, ${top}px)`
+                            }}
+                    ></div>
+                    );
+                }}
             </Animate>
         ))
     )
