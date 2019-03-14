@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Fade from 'react-reveal/Fade';
 import FormField from '../../ui/formFields';
-import {validate} from '../../ui/misc';
+import { validate } from '../../ui/misc';
+import { firebasePromotions } from '../../../firebase';
 
 class Enroll extends Component {
     state = {
@@ -43,6 +44,27 @@ class Enroll extends Component {
             formdata: newFormdata
         })
     }
+    resetFormSucces(type){
+        const newFormdata = {...this.state.formdata}
+        for(let key in newFormdata){
+            newFormdata[key].value = '';
+            newFormdata[key].valid = false;
+            newFormdata[key].validationMessage = '';
+        }
+        this.setState({
+            formError:false,
+            formdata: newFormdata,
+            formSucces: type ?  'Cogratulation' : 'Alredy on database'
+        });
+        this.succesMessage()
+    }
+    succesMessage(){
+        setTimeout(()=>{
+            this.setState({
+                formSucces:''
+            })
+        },2000)
+    }
     submitForm(event){
         event.preventDefault();
 
@@ -54,13 +76,20 @@ class Enroll extends Component {
             formIsValid = this.state.formdata[key].valid && formIsValid;
         }
         if(formIsValid){
-
+            firebasePromotions.orderByChild('email').equalTo(dataToSubmit.email).once("value")
+            .then((snapshot)=>{
+                if(snapshot.val() === null){
+                    firebasePromotions.push(dataToSubmit);
+                    this.resetFormSucces(false)
+                }else{
+                    this.resetFormSucces(false)
+                }
+            });
         }else{
             this.setState({
                 formError: true
             })
         }
-        console.log(dataToSubmit);
     }
 
     render() {
@@ -77,8 +106,12 @@ class Enroll extends Component {
                                 formdata={this.state.formdata.email}
                                 change={(element)=> this.updateForm(element)}
                             />
-                            {this.state.formError ? <div className="error_label">Something is wrong, try again.</div>
-                            : null}
+                            { this.state.formError ? 
+                                <div className="error_label">Something is wrong, try again.</div>
+                                : null 
+                            }
+                            <div className="success_lable"> {this.state.formSucces} </div>
+
                             <button onClick={(event)=> this.submitForm(event)}>Enroll</button>
                         </div>
                     </form>
