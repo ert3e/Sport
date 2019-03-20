@@ -13,7 +13,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { firebaseMatches } from  '../../../firebase';
 import { firebaseLooper, reverseArray } from  '../../ui/misc';
 
-class AdminMatches extends Comment {
+class AdminMatches extends Component {
 
     state = {
         isloading: true,
@@ -51,7 +51,7 @@ class AdminMatches extends Comment {
                                                 {match.date}
                                             </TableCell>
                                             <TableCell>
-                                               <Link to={`/admin_matces/edit_match/${match.id}`}>
+                                               <Link to={`/admin_matches/edit_match/${match.id}`}>
                                                 {match.away} <strong>-</strong> {match.local}
                                                </Link>
                                             </TableCell>

@@ -14,7 +14,6 @@ import AdminMatches from './Components/admin/matches';
 import AddEditMatch from './Components/admin/matches/addEditMatch'
 
 const Routes = (props) => {
-  console.log(props)
   return(
     <div>
       <Layout>
