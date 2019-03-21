@@ -93,14 +93,14 @@ class SignIn extends Component {
                     <form onSubmit={(event)=> this.submitForm(event)}>
                         <h2>Please Login</h2>
                         <FormField
-                                id={'email'}
-                                formdata={this.state.formdata.email}
-                                change={(element)=> this.updateForm(element)}
-                            />
+                            id={'email'}
+                            formdata={this.state.formdata.email}
+                            change={(element)=> this.updateForm(element)}
+                        />
                         <FormField
-                                id={'password'}
-                                formdata={this.state.formdata.password}
-                                change={(element)=> this.updateForm(element)}
+                            id={'password'}
+                            formdata={this.state.formdata.password}
+                            change={(element)=> this.updateForm(element)}
                         />
                         { this.state.formError ? 
                                 <div className="error_label">Something is wrong, try again.</div>

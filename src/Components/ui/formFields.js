@@ -41,7 +41,7 @@ const FormField = ({formdata, id, change}) => {
                             <div className="label_inputs">
                                 {formdata.config.label}
                             </div>
-                        : null
+                            : null
                         }
                         <select
                             value={formdata.value}
@@ -49,7 +49,7 @@ const FormField = ({formdata, id, change}) => {
                         >
                         <option value="">Select one</option>
                         {
-                            formdata.config.option.map((item)=>(
+                            formdata.config.options.map((item)=>(
                                 <option key={item.key} value={item.key}>
                                     {item.value}
                                 </option>
@@ -59,6 +59,7 @@ const FormField = ({formdata, id, change}) => {
                         { showError() }
                     </div>
                 )
+            break;
             default:
                 formTemplate=null;
         }   
