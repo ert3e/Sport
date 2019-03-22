@@ -60,7 +60,24 @@ class AddEditMatch extends Component {
                 validationMessage:'',
                 showLable: false
             },
-            resultAwey:{
+            away:{
+                element: 'select',
+                value: '',
+                config:{
+                    label: 'Select a local team',
+                    name: 'select_local',  
+                    type: 'select',
+                    options: [],
+
+                },
+                validation:{
+                    required: true
+                },
+                valid: false,
+                validationMessage:'',
+                showLable: false
+            },
+            resultAway:{
                 element: 'input',
                 value: '',
                 config:{
@@ -76,7 +93,80 @@ class AddEditMatch extends Component {
                 validationMessage:'',
                 showLable: false
             },
+            referee:{
+                element: 'input',
+                value: '',
+                config:{
+                    label: 'Referee',
+                    name: 'referee_input',
+                    type: 'text',
+
+                },
+                validation:{
+                    required: true
+                },
+                valid: false,
+                validationMessage: '',
+                showLable: true
+            },
+            stadium:{
+                element: 'input',
+                value: '',
+                config:{
+                    label: 'Stadium',
+                    name: 'stadium_input',
+                    type: 'text',
+
+                },
+                validation:{
+                    required: true
+                },
+                valid: false,
+                validationMessage: '',
+                showLable: true
+            },
+            result:{
+                element: 'select',
+                value: '',
+                config:{
+                    label: 'Team result',
+                    name: 'select_local',
+                    type: 'select',
+                    options: [
+                        {key: 'W', value: 'W'}, 
+                        {key: 'L', value: 'L'},
+                        {key: 'D', value: 'D'},
+                        {key: 'n/a', value: 'n/a'}
+                    ]
+                },
+                validation:{
+                    required: true,
+                },
+                valid: false,
+                validationMessage: '',
+                showLable: true
+            },
+            final:{
+                element: 'select',
+                value: '',
+                config:{
+                    label: 'Game played ?',
+                    name: 'select_played',
+                    type: 'select',
+                    options: [
+                        {key: 'Yes', value: 'Yes'}, 
+                        {key: 'No', value: 'No'}
+                    ]
+                },
+                validation:{
+                    required: true,
+                },
+                valid: false,
+                validationMessage: '',
+                showLable: true
+            },
         }
+       
     }
     render() {
         return (
@@ -110,11 +200,63 @@ class AddEditMatch extends Component {
                                 </div>
                             </div>
                         </div>
-                        <FormField
-                            id={'local'}
-                            formdata={this.state.formdata.local}
-                            change={(element)=> this.updateForm(element)}
-                        />
+                    
+                        <div className="select_team_layout">
+                            <div className="label_inputs">Away</div>
+                            <div className="wrapper">
+                                <div className="left">
+                                    <FormField
+                                        id={'away'}
+                                        formdata={this.state.formdata.away}
+                                        change={(element)=> this.updateForm(element)}
+                                    />
+                                </div>
+                                <div>
+                                    <FormField
+                                        id={'resultAway'}
+                                        formdata={this.state.formdata.resultAway}
+                                        change={(element)=> this.updateForm(element)}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="spliet_fields">
+                            <FormField
+                                id={'referee'}
+                                formdata={this.state.formdata.referee}
+                                change={(element)=> this.updateForm(element)}
+                            />
+                            <FormField
+                                id={'stadium'}
+                                formdata={this.state.formdata.stadium}
+                                change={(element)=> this.updateForm(element)}
+                            />
+                        </div>
+                        <div className="spliet_fields last">
+                            <FormField
+                                id={'result'}
+                                formdata={this.state.formdata.result}
+                                change={(element)=> this.updateForm(element)}
+                            />
+                            <FormField
+                                id={'final'}
+                                formdata={this.state.formdata.final}
+                                change={(element)=> this.updateForm(element)}
+                            />
+                        
+                        </div>
+                        <div className="succes_lable">{this.state.formSuccess}</div>
+                            {this.state.formError ?
+                                <div className="erorr_label">
+                                    Something is wrong
+                                </div>
+                                : ''
+                            }
+                            <div className="admin_submit">
+                                <button onClick={(event)=>this.submitForm(event)}>
+
+                                </button>
+                            </div>
                     </form>
                 </div>
                             
