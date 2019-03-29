@@ -371,11 +371,11 @@ class AddEditMatch extends Component {
                                 </div>
                                 : ''
                             }
-                            <div className="admin_submit">
+                        <div className="admin_submit">
                                 <button onClick={(event)=>this.submitForm(event)}>
                                     {this.state.formType}
                                 </button>
-                            </div>
+                        </div>
                     </form>
                 </div>
                             
