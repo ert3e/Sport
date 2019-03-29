@@ -82,7 +82,11 @@ class AddEditplayers extends Component {
                     </h2>
                     <div>
                         <form onSubmit={(event)=>this.submitForm(event)}>
-                            
+                            <FormField
+                            id={'name'}
+                            formdata={this.state.formdata.name}
+                            change={(element)=> this.updateForm(element)}
+                        />
                         </form>
                     </div>
                 </div>
