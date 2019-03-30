@@ -186,6 +186,11 @@ class AddEditplayers extends Component {
                                 change={(element)=> this.updateForm(element)}
                             />
                             <FormField
+                                id={'name'}
+                                formdata={this.state.formdata.name}
+                                change={(element)=> this.updateForm(element)}
+                            />
+                            <FormField
                                 id={'lastname'}
                                 formdata={this.state.formdata.lastname}
                                 change={(element)=> this.updateForm(element)}
