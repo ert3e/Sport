@@ -4,7 +4,7 @@ import AdminLayout from '../../../Hoc/AdminLayout';
 import FormField from '../../ui/formFields';
 import { validate } from '../../ui/misc';
 
-
+import Fileuploader from '../../ui/formFields';
 import { firebasePlayers, firebaseDB, firebase } from '../../../firebase';
 
     
@@ -16,7 +16,7 @@ class AddEditplayers extends Component {
         formType:'',
         formError: false,
         formSuccess:'',
-        defaultImd:'',
+        defaultImg:'',
         formdata:{
             name:{
                 element: 'input',
@@ -24,6 +24,22 @@ class AddEditplayers extends Component {
                 config:{
                     label: 'Player Name',
                     name: 'name_input',
+                    type: 'text',
+
+                },
+                validation:{
+                    required: true
+                },
+                valid: false,
+                validationMessage: '',
+                showLable: true
+            },
+            lastname:{
+                element: 'input',
+                value: '',
+                config:{
+                    label: 'Player Name',
+                    name: 'lastname_input',
                     type: 'text',
 
                 },
@@ -71,6 +87,15 @@ class AddEditplayers extends Component {
                 validationMessage: '',
                 showLable: true
             },
+            image:{
+                element:'',
+                value:'',
+                validation:{
+                    required:true
+                },
+                valid:true
+            }
+
         }
     }
     updateFields(match, teamOptions, teams, type, matchId){
@@ -94,7 +119,7 @@ class AddEditplayers extends Component {
         })
     }
     componentDidMount(){
-        const playerId = this .props.match.params.is;
+        const playerId = this.props.match.params.is;
         if(!playerId){
             this.setState({
                 formType:'Add player'
@@ -143,12 +168,18 @@ class AddEditplayers extends Component {
     render() {
         return (
             <AdminLayout> 
-                <div className="wditplayers_dialog_wrapper">
+                <div className="editplayers_dialog_wrapper">
                     <h2>
                         {this.state.formType}
                     </h2>
                     <div>
                         <form onSubmit={(event)=>this.submitForm(event)}>
+                            <Fileuploader
+                                dir="players"
+                                tag={"Player image"}
+                                defaultImg={this.state.defaultImg}
+                                defaultName={this.state.formdate.image.value}
+                            />
                             <FormField
                                 id={'name'}
                                 formdata={this.state.formdata.name}
