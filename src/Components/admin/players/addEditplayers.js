@@ -164,7 +164,12 @@ class AddEditplayers extends Component {
             })
         }
     }
+    resetImage = () => {
 
+    }
+    storeFilename = () => {
+        
+    }
     render() {
         return (
             <AdminLayout> 
@@ -179,6 +184,8 @@ class AddEditplayers extends Component {
                                 tag={"Player image"}
                                 defaultImg={this.state.defaultImg}
                                 defaultName={this.state.formdate.image.value}
+                                resetImage={this.resetImage()}
+                                filename ={(filename)=>this.storeFilename(filename)}
                             />
                             <FormField
                                 id={'name'}
