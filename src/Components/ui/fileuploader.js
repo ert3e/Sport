@@ -39,6 +39,14 @@ class Fileuploader extends Component {
         }
         return null
     }
+    uploadAgain = () => {
+        this.setState({
+            name:'',
+            isUploading:false,
+            fileURL:''
+        });
+        this.props.resetImage();
+    }
     
     render() {
         return (
@@ -50,10 +58,10 @@ class Fileuploader extends Component {
                         accept="image/*"
                         name="image"
                         randomizeFilename
-                        storageRef={firebase.storage().ref(this.props.dir)}
-                        onUploadStart={ this.handleUploadStart }
-                        onUploadError={ this.handleUploadError }
-                        onUploadSuccess={ this.handleUploadSuccess }
+                        storageRef = {firebase.storage().ref(this.props.dir)}
+                        onUploadStart = { this.handleUploadStart }
+                        onUploadError = { this.handleUploadError }
+                        onUploadSuccess = { this.handleUploadSuccess }
                     />
                 </div>
                 :null
