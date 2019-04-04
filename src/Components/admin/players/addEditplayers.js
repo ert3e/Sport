@@ -125,7 +125,16 @@ class AddEditplayers extends Component {
                 formType:'Add player'
             })
         } else {
+            firebaseDB.ref(`players/${playerId}`).once('value')
+            .then(snapshot => {
+                const playerData = snapshot.val();
 
+                firebase.storage().ref('players')
+                .child(playerData.image).getDownloadURL()
+                .then( url =>{
+                    this.updateFields(playerData,playerId, 'Edit player', url)
+                })
+            })
         }
     }
     updateForm(element, content = ''){
