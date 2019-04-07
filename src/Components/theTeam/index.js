@@ -35,6 +35,24 @@ class TheTeam extends Component {
             })
         })
     }
+    showplayersByCategory = (category) => (
+        this.state.players ?
+            this.state.players.map((player,i)=>{
+                return player.position === category ?
+                <Fade delay={i*20} key={i}>
+                    <div className="item">
+                    <PlayerCard
+                        number={player.number}
+                        name={player.name}
+                        lastname={player.lastname}
+                        bck={player.url}
+                    />
+                    </div>
+                </Fade>
+                :null
+            })
+            :null
+    )
     render() {
         return (
             <div className="the_team_container" 
@@ -42,10 +60,24 @@ class TheTeam extends Component {
                     background: `url(${Stripes}) repeat`
                 }}>
                 { !this.state.loading ?
-                    <div className="team_category_wrapper">
-                        <div className="title">Keepers</div>
-                        <div className="team_cards">
-                            {this.showlayersByCategory('Keeper')}
+                    <div> 
+                        <div className="team_category_wrapper">
+                            <div className="title">Keepers</div>
+                            <div className="team_cards">
+                                {this.showlayersByCategory('Keeper')}
+                            </div>
+                        </div>
+                        <div className="team_category_wrapper">
+                            <div className="title">Defencer</div>
+                            <div className="team_cards">
+                                {this.showlayersByCategory('Defencer')}
+                            </div>
+                        </div>
+                        <div className="team_category_wrapper">
+                            <div className="title">Midfield</div>
+                            <div className="team_cards">
+                                {this.showlayersByCategory('Midfield')}
+                            </div>
                         </div>
                     </div>
                 :null
