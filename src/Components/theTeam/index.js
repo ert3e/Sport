@@ -79,6 +79,12 @@ class TheTeam extends Component {
                                 {this.showlayersByCategory('Midfield')}
                             </div>
                         </div>
+                        <div className="team_category_wrapper">
+                            <div className="title">Strikers</div>
+                            <div className="team_cards">
+                                {this.showlayersByCategory('Striker')}
+                            </div>
+                        </div>
                     </div>
                 :null
                 }
