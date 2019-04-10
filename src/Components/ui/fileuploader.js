@@ -10,7 +10,7 @@ class Fileuploader extends Component {
         fileURL:''
     }
     handleUploadStart = () => {
-        this.serState({
+        this.setState({
             isUploading:true
         })
     }

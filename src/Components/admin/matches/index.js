@@ -10,8 +10,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import { firebaseMatches } from  '../../../firebase';
-import { firebaseLooper, reverseArray } from  '../../ui/misc';
+import { firebaseMatches } from '../../../firebase';
+import { firebaseLooper, reverseArray } from '../../ui/misc';
 
 class AdminMatches extends Component {
 
@@ -19,18 +19,22 @@ class AdminMatches extends Component {
         isloading: true,
         matches:[]
     }
+
     componentDidMount(){
-        firebaseMatches.once('value').then(snaphot=>{
-            const matches = firebaseLooper(snaphot);
+        firebaseMatches.once('value').then(snapshot=>{
+            const matches = firebaseLooper(snapshot);
+
             this.setState({
-                isloading:false,
+                isloading: false,
                 matches:reverseArray(matches)
-            })
+            })            
+
         });
     }
+
+
     render() {
-    
-       return (
+        return (
             <AdminLayout>
                 <div>
                     <Paper>
@@ -51,9 +55,9 @@ class AdminMatches extends Component {
                                                 {match.date}
                                             </TableCell>
                                             <TableCell>
-                                               <Link to={`/admin_matches/edit_match/${match.id}`}>
-                                                {match.away} <strong>-</strong> {match.local}
-                                               </Link>
+                                                <Link to={`/admin_matches/edit_match/${match.id}`}>
+                                                    {match.away} <strong>-</strong> {match.local}
+                                                </Link>
                                             </TableCell>
                                             <TableCell>
                                                 {match.resultAway} <strong>-</strong> {match.resultLocal}
@@ -62,28 +66,25 @@ class AdminMatches extends Component {
                                                 { match.final === "Yes" ?
                                                     <span className="matches_tag_red">Final</span>
                                                     :
-                                                    <span className="matches_tag_greenn">Not played </span>
-                                                } <strong>-</strong> {match.resultLocal}
+                                                    <span className="matches_tag_grenn">Not played yet</span>
+                                                }
                                             </TableCell>
-                                            
                                         </TableRow>
                                     ))
                                     :null
-
                                 }
                             </TableBody>
                         </Table>
                     </Paper>
                     <div className="admin_progress">
-                        {this.state.isloading ?
-                            <CircularProgress thinckness={7} style={{color:'#98c5e9'}}/>
+                        { this.state.isloading ?
+                            <CircularProgress thickness={7} style={{color:'#98c5e9'}}/>
                             :''
                         }
                     </div>
                 </div>
             </AdminLayout>
-            
-        )
+        );
     }
 }
 
