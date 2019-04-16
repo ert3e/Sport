@@ -45,8 +45,27 @@ class LeagueTable extends Component {
     )
     render() {
         return (
-            <div>
-                
+            <div className="leangue_table_wrapper">
+                <div className="title">
+                    League Table
+                </div>
+                <div style={{background: '#98c6e9'}}>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell style={style.cell}>Pos</TableCell>
+                                <TableCell style={style.cell}>Team</TableCell>
+                                <TableCell style={style.cell}>W</TableCell>
+                                <TableCell style={style.cell}>L</TableCell>
+                                <TableCell style={style.cell}>D</TableCell>
+                                <TableCell style={style.cell}>Pts</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {this.showTeamposition(this.state.positions)}
+                        </TableBody>
+                    </Table>
+                </div>
             </div>
         );
     }
