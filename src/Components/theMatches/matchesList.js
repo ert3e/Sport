@@ -71,6 +71,11 @@ class MatchesList extends Component {
                                         <div className="result">{data.resultAway}</div>
                                </div>       
                             </div>
+                            <div className="block_wrapper info">
+                                <div><strong>Date:</strong>{data.date}</div>
+                                <div><strong>Stadium:</strong>{data.stadium}</div>
+                                <div><strong>Referee:</strong>{data.referee}</div>
+                            </div>
                         </div>
                     ))}
                 </div>
