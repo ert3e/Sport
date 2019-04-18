@@ -47,20 +47,47 @@ class TheMatches extends Component {
                                     Show match
                                 </div>
                                 <div className="cont">
-                                    <div className={`option`}
+                                    <div className={`option ${state.plyedFilter === 'All'?'active':''}`}
                                         onClick={()=> this.showPlayed('All')}
                                     >
                                         All
                                     </div>
-                                    <div className={`option`}
+                                    <div className={`option ${state.plyedFilter === 'Yes'?'active':''}`}
                                         onClick={()=> this.showPlayed('Yes')}
                                     >
                                         Played
                                     </div>
-                                    <div className={`option`}
+                                    <div className={`option ${state.plyedFilter === 'No'?'active':''}`}
                                         onClick={()=> this.showPlayed('No')}
                                     >
                                         Not played
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="match_filters_box">
+                                <div className="tag">
+                                    Reuslt
+                                </div>
+                                <div className="cont">
+                                    <div className={`option ${state.plyedFilter === 'All'?'active':''}`}
+                                        onClick={()=> this.showResult('All')}
+                                    >
+                                        All
+                                    </div>
+                                    <div className={`option ${state.plyedFilter === 'Yes'?'active':''}`}
+                                        onClick={()=> this.showResult('W')}
+                                    >
+                                       W
+                                    </div>
+                                    <div className={`option ${state.plyedFilter === 'No'?'active':''}`}
+                                        onClick={()=> this.showResult('L')}
+                                    >
+                                        L
+                                    </div>
+                                    <div className={`option ${state.plyedFilter === 'No'?'active':''}`}
+                                        onClick={()=> this.showResult('D')}
+                                    >
+                                        D
                                     </div>
                                 </div>
                             </div>
