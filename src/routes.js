@@ -1,7 +1,6 @@
 import React from 'react';
 import Layout from './Hoc/Layout'
 import {Switch, Route} from 'react-router-dom';
-import TheMatches from './Components/theMatches'
 
 import PrivateRoute from './Components/authRoutes/privateRoutes';
 import PublicRoute from './Components/authRoutes/publicRoutes';
@@ -9,6 +8,8 @@ import PublicRoute from './Components/authRoutes/publicRoutes';
 import Home from './Components/home';
 import SignIn from './Components/signin';
 import TheTeam from './Components/theTeam';
+import TheMatches from './Components/theMatches';
+import NotFound from './Components/ui/not_found';
 
 import Dashboard from './Components/admin/Dashboard';
 import AdminMatches from './Components/admin/matches';
@@ -32,6 +33,7 @@ const Routes = (props) => {
           <PublicRoute {...props } restricted={false} path="/" exact component={Home}/>
           <PublicRoute {...props } restricted={false} path="/the_team" exact component={TheTeam}/>
           <PublicRoute {...props } restricted={false} path="/the_matches" exact component={TheMatches}/>
+          <PublicRoute {...props } restricted={false} path="/" exact component={Home}/>
         </Switch>
       </Layout>
     </div>

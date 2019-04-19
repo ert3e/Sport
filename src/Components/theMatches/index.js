@@ -35,6 +35,16 @@ class TheMatches extends Component {
             resultFilter: 'All'
         })
     }
+    showPlayed = (reuslt) => {
+        const list = this.state.matches.filter((match)=>{
+            return match.reuslt === reuslt
+        });
+        this.setState({
+            filterMatches: reuslt === 'All' ? this.state.matches : list,
+            playerFilter: 'All',
+            resultFilter: reuslt
+        })
+    }
     render() {
         const state = this.state;
         return (
@@ -69,22 +79,22 @@ class TheMatches extends Component {
                                     Reuslt
                                 </div>
                                 <div className="cont">
-                                    <div className={`option ${state.plyedFilter === 'All'?'active':''}`}
+                                    <div className={`option ${state.resultFilter === 'All'?'active':''}`}
                                         onClick={()=> this.showResult('All')}
                                     >
                                         All
                                     </div>
-                                    <div className={`option ${state.plyedFilter === 'Yes'?'active':''}`}
+                                    <div className={`option ${state.resultFilter === 'W'?'active':''}`}
                                         onClick={()=> this.showResult('W')}
                                     >
                                        W
                                     </div>
-                                    <div className={`option ${state.plyedFilter === 'No'?'active':''}`}
+                                    <div className={`option ${state.resultFilter === 'L'?'active':''}`}
                                         onClick={()=> this.showResult('L')}
                                     >
                                         L
                                     </div>
-                                    <div className={`option ${state.plyedFilter === 'No'?'active':''}`}
+                                    <div className={`option ${state.resultFilter === 'D'?'active':''}`}
                                         onClick={()=> this.showResult('D')}
                                     >
                                         D
