@@ -35,7 +35,7 @@ class TheMatches extends Component {
             resultFilter: 'All'
         })
     }
-    showPlayed = (reuslt) => {
+    showResult = (reuslt) => {
         const list = this.state.matches.filter((match)=>{
             return match.reuslt === reuslt
         });
